@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548240097568.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D506B90B",
+    "lastKnownWriteTime" : 31244220638101619,
+    "last_content_update" : 1548240097568,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "d54ef17a9d1a420a9f0804b99c3b6a71",
+        "name" : "stemmed_text",
+        "title" : "stemmed_text"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

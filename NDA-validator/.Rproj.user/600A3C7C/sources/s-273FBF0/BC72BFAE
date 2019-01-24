@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548173269656.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BC72BFAE",
+    "lastKnownWriteTime" : 1548324563,
+    "last_content_update" : 1548324563909,
+    "path" : "C:/Users/cvazquez/Desktop/Santander/Innovation Lab/NDAs/NDA-validator/validator.R",
+    "project_path" : "validator.R",
+    "properties" : {
+        "cursorPosition" : "39,11",
+        "scrollLine" : "35",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

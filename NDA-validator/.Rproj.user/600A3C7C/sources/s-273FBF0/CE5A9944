@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548240082691.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CE5A9944",
+    "lastKnownWriteTime" : 31244220631089152,
+    "last_content_update" : 1548240082691,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "1154e11f4da447bc9b698d544b817aa6",
+        "name" : "lemmatized_text",
+        "title" : "lemmatized_text"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}
