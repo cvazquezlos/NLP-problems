@@ -1,56 +1,38 @@
 library(corpus)
 library(qdap)
 library(tm)
+library(SnowballC)
 
 text <- readLines("./demo.txt", encoding = "latin1")
+lemma_dictionary <- read.delim("./lemmatization-es.txt", encoding = "UTF-8", header = FALSE, stringsAsFactors = FALSE)
+names(lemma_dictionary) <- c("lemma", "term")
 
+
+test <- function(phr) {
+  print(phr)
+  return(phr)
+}
 ###################################################################################
 ############################### 1. Data preparation ###############################
 ###################################################################################
-phrases <- strsplit(text, split = "[.]")
+sentences <- strsplit(text, split = "[.]")[[1]]
 ## Manual classification process
+l_sentences <- c("A", "B", "B", "A", "C", "A", "A", "C", "C", "C", "B", "A", "C")
+lemmas_parser <- new_stemmer(lemma_dictionary$term, lemma_dictionary$lemma)
 
-## Data processing
-p_dictionary <- read.delim("./lemmatization-es.txt", encoding = "UTF-8", header = FALSE, stringsAsFactors = FALSE)
-names(p_dictionary) <- c("lemma", "term")
-lemmas_parser <- new_stemmer(p_dictionary$term, p_dictionary$lemma)
-# C: Clean, L: Lemmatized, S: Stemmed
-cls_phrases <- list()
-i <- 1
-phrases
-for (phrase in phrases[[1]]) {
-  cl_phrase <- paste(unlist(text_tokens(phrase, stemmer = lemmas_parser, 
-                                                map_case = TRUE, 
-                                                drop = stopwords_es, 
-                                                drop_punct = TRUE)), collapse = " ")
-  cls_phrases[i] <- paste(unlist(text_tokens(cl_phrase, stemmer = "es")), collapse = " ")
-  i <- i + 1
-}
-cls_phrases
-
-# Categorization test
-categoryA <- paste(unlist(c(cls_phrases[[1]], cls_phrases[[2]], cls_phrases[[5]], cls_phrases[[7]], cls_phrases[[13]])), collapse = " ")
-categoryB <- paste(unlist(c(cls_phrases[[3]], cls_phrases[[4]], cls_phrases[[6]], cls_phrases[[8]], cls_phrases[[9]])), collapse = " ")
-categoryC <- paste(unlist(c(cls_phrases[[10]], cls_phrases[[11]], cls_phrases[[12]])), collapse = " ")
-
-# Measure frequences
-freqA <- freq_terms(categoryA, 10)
-freqB <- freq_terms(categoryB, 10)
-freqC <- freq_terms(categoryC, 10)
-plot(freqC)
-
-# Creation of the VCorpuses
-vSourceA <- VectorSource(categoryA)
-VCorpusA <- VCorpus(vSourceA)
-VSourceB <- VectorSource(categoryB)
-VCorpusB <- VCorpus(vSourceB)
-VSourceC <- VectorSource(categoryC)
-VCorpusC <- VCorpus(vSourceC)
-
-VCorpusC
-
-# Creation of the Document Term Matrix (DTM)
-categoryA_dtm <- DocumentTermMatrix(VCorpusA)
-categoryA_m <- as.matrix(categoryA_dtm)
-dim(categoryA_m)
-categoryA_m
+sentences_corpus <- VCorpus(VectorSource(sentences))
+sentences_corpus <- tm_map(sentences_corpus, content_transformer(tolower))
+sentences_corpus <- tm_map(sentences_corpus, removePunctuation)
+sentences_corpus <- tm_map(sentences_corpus, stripWhitespace)
+sentences_corpus <- tm_map(sentences_corpus, content_transformer(function(x, pattern) {
+  cl_x <- paste(unlist(text_tokens(x, stemmer = lemmas_parser, map_case = TRUE, drop = stopwords_es)), collapse = " ")
+  cls_x <- paste(unlist(text_tokens(cl_x, stemmer = "es")), collapse = " ")
+  return(cls_x)
+}))
+sentences_corpus <- tm_map(sentences_corpus, removeNumbers)
+sentences_corpus <- tm_map(sentences_corpus, content_transformer(print))
+dtm <- DocumentTermMatrix(sentences_corpus)
+dtm <- removeSparseTerms(dtm, 0.999)
+bow_df <- as.data.frame(as.matrix(dtm))
+bow_df$category <- l_sentences
+bow_df
