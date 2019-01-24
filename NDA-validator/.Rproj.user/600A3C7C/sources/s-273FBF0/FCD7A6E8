@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548328163672.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "FCD7A6E8",
+    "lastKnownWriteTime" : 5292976842137927680,
+    "last_content_update" : 1548328163672,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "377A80E3",
+        "caption" : "bow_df",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=bow_df&cache_key=377A80E3",
+        "displayedObservations" : 13,
+        "environment" : "",
+        "object" : "bow_df",
+        "preview" : 0,
+        "totalObservations" : 13,
+        "variables" : 119
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548327023208.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "245299A",
+    "lastKnownWriteTime" : 1479848090,
+    "last_content_update" : 1479848090,
+    "path" : "C:/Users/cvazquez/Desktop/Santander/Innovation Lab/NDAs/NDA-validator/natural_language_processing.R",
+    "project_path" : "natural_language_processing.R",
+    "properties" : {
+        "cursorPosition" : "14,49",
+        "scrollLine" : "8"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
